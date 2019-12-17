@@ -43,6 +43,21 @@ public class User implements Serializable{
 	@NotEmpty
 	@Column(name="CORREO", nullable=false)
 	private String correo;
+	
+        @NotEmpty
+	@Column(name="departamentoFK", nullable=false)
+	private String departamentoFK;
+
+    public String getDepartamentoFK() {
+        return departamentoFK;
+    }
+
+    public void setDepartamentoFK(String departamentoFK) {
+        this.departamentoFK = departamentoFK;
+    }
+        
+	
+        
 
 	@NotEmpty
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -50,6 +65,7 @@ public class User implements Serializable{
              joinColumns = { @JoinColumn(name = "USER_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
 	private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+	
 
 	public Integer getId() {
 		return id;
@@ -107,6 +123,11 @@ public class User implements Serializable{
 		this.userProfiles = userProfiles;
 	}
 
+
+    
+   
+        
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -143,7 +164,7 @@ public class User implements Serializable{
 	public String toString() {
 		return "User [id=" + id + ", usuId=" + usuId + ", password=" + password
 				+ ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", correo=" + correo + "]";
+				+ ", correo=" + correo +", departamentoFK=" + departamentoFK +  "]";
 	}
 
 

@@ -10,53 +10,53 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.model.Prestamo;
 
 
 
-@Repository("bodegaDao")
-public class BodegaDaoImpl extends AbstractDao<Integer, Bodega> implements BodegaDao {
+@Repository("prestamoDao")
+public class PrestamoDaoImpl extends AbstractDao<Integer, Prestamo> implements PrestamoDao {
 
-	static final Logger logger = LoggerFactory.getLogger(BodegaDaoImpl.class);
+	static final Logger logger = LoggerFactory.getLogger(PrestamoDaoImpl.class);
 	
-	public Bodega findByIdb(int id) {
-		Bodega bodega = getByKey(id);
-		if(bodega!=null){
-			Hibernate.initialize(bodega.getId());
+	public Prestamo findByIdp(int id) {
+		Prestamo prestamo = getByKey(id);
+		if(prestamo!=null){
+			Hibernate.initialize(prestamo.getId());
 		}
-		return bodega;
+		return prestamo;
 	}
 
-	public Bodega findByBODEG(String bodeg) {
-		logger.info("BODEG : {}", bodeg);
+	public Prestamo findByPRES(String pres) {
+		logger.info("PRES : {}", pres);
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("bodegId", bodeg));
-		Bodega bodega = (Bodega)crit.uniqueResult();
-		if(bodega!=null){
-			Hibernate.initialize(bodega.getId());
+		crit.add(Restrictions.eq("prestamoId", pres));
+		Prestamo prestamo = (Prestamo)crit.uniqueResult();
+		if(prestamo!=null){
+			Hibernate.initialize(prestamo.getId());
 		}
-		return bodega;
+		return prestamo;
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Bodega> findAllBodegas() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("bodegId"));
+	public List<Prestamo> findAllPrestamos() {
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("prestamoId"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-		List<Bodega> bodegas = (List<Bodega>) criteria.list();
+		List<Prestamo> prestamos = (List<Prestamo>) criteria.list();
 		
 		
-		return bodegas;
+		return prestamos;
 	}
 
-	public void saveb(Bodega bodega) {
-		persist(bodega);
+	public void savep(Prestamo prestamo) {
+		persist(prestamo);
 	}
 
-	public void deleteByBODEG(String bodeg) {
+	public void deleteByPRES(String pres) {
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("bodegId", bodeg));
-		Bodega bodega = (Bodega)crit.uniqueResult();
-		delete(bodega);
+		crit.add(Restrictions.eq("prestamoId", pres));
+		Prestamo prestamo = (Prestamo)crit.uniqueResult();
+		delete(prestamo);
 	}
 
     

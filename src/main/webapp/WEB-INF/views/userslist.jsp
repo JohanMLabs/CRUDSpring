@@ -18,16 +18,7 @@
             <%@include file="authheader.jsp" %>	
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <sec:authorize access="hasRole('ADMIN')">
-                    <div class="well">
-                        <a class="btn btn-success" href="<c:url value='/listb' />"> Bodega</a>
-                    </div>
-                </sec:authorize>
-                <sec:authorize access="hasRole('ADMIN')">
-                    <div class="well">
-                        <a class="btn btn-success" href="<c:url value='/listc' />"> Compras</a>
-                    </div>
-                </sec:authorize>
+
                 <div class="panel-heading"><span class="lead">Lista de Usuarios</span></div>
                 <sec:authorize access="hasRole('ADMIN')">
                     <div class="well">
@@ -42,6 +33,8 @@
                             <th>Apellido</th>
                             <th>Correo</th>
                             <th>USU ID</th>
+                            <th>Departamento</th>
+                          
                                 <sec:authorize access="hasRole('ADMIN')">
                                 <th width="100"></th>
                                 </sec:authorize>
@@ -59,6 +52,8 @@
                                 <td>${user.apellido}</td>
                                 <td>${user.correo}</td>
                                 <td>${user.usuId}</td>
+                                <td>${user.departamentoFK}</td>
+                             
                                 <sec:authorize access="hasRole('ADMIN')">
                                     <td><a href="<c:url value='/edit-user-${user.usuId}' />" class="btn btn-warning custom-width">Editar</a></td>
                                 </sec:authorize>
@@ -70,8 +65,10 @@
                     </tbody>
                 </table>
             </div>
-
+            <span class="well floatRight">
+                Ir a <a href="<c:url value='/menu' />">Volver al Menu</a>
+            </span>
         </div>
-           
+
     </body>
 </html>

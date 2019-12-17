@@ -4,16 +4,15 @@ import java.util.List;
 
 import com.websystique.springmvc.model.Compras;
 
-
 public interface ComprasService {
 	
 	Compras findByIdc(int id);
 	
 	Compras findByCOM(String com);
 	
-	void saveCompras(Compras com);
+	void saveCompras(Compras compras);
 	
-	void updateCompras(Compras com);
+	void updateCompras(Compras compras);
 	
 	void deleteComprasByCOM(String com);
 

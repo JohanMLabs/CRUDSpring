@@ -3,7 +3,7 @@ package com.websystique.springmvc.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +18,8 @@ public class BodegaServiceImpl implements BodegaService{
 	@Autowired
 	private BodegaDao dao;
 
-//	@Autowired
-//    private PasswordEncoder passwordEncoder;
+	//@Autowired
+    //private PasswordEncoder passwordEncoder;
 	
 	public Bodega findByIdb(int id) {
 		return dao.findByIdb(id);
@@ -44,13 +44,14 @@ public class BodegaServiceImpl implements BodegaService{
 			entity.setUbicacion(bodega.getUbicacion());
 			entity.setDescripcion(bodega.getDescripcion());
 			entity.setFechaIngreso(bodega.getFechaIngreso());
-			//entity.setCorreo(user.getCorreo());
-			//entity.setUserProfiles(user.getUserProfiles());
+		
 		}
 	}
 
 	
-	
+	public void deleteBodegaByBODEG(String bodeg) {
+		dao.deleteByBODEG(bodeg);
+	}
 
 	public List<Bodega> findAllBodegas() {
 		return dao.findAllBodegas();
@@ -61,10 +62,5 @@ public class BodegaServiceImpl implements BodegaService{
 		return ( bodega == null || ((id != null) && (bodega.getId() == id)));
 	}
 
-    @Override
-    public void deleteBodegaByBODEG(String bodeg) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       dao.deleteByBODEG(bodeg);
-    }
-	
+  
 }

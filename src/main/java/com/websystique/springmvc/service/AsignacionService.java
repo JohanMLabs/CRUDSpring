@@ -2,23 +2,22 @@ package com.websystique.springmvc.service;
 
 import java.util.List;
 
-import com.websystique.springmvc.model.Compras;
+import com.websystique.springmvc.model.Asignacion;
 
+public interface AsignacionService {
+	
+	Asignacion findByIda(int id);
+	
+	Asignacion findByASI(String asi);
+	
+	void saveAsignacion(Asignacion asignacion);
+	
+	void updateAsignacion(Asignacion asignacion);
+	
+	void deleteAsignacionByASI(String asi);
 
-public interface ComprasService {
+	List<Asignacion> findAllAsignaciones(); 
 	
-	Compras findByIdc(int id);
-	
-	Compras findByCOM(String com);
-	
-	void saveCompras(Compras com);
-	
-	void updateCompras(Compras com);
-	
-	void deleteComprasByCOM(String com);
-
-	List<Compras> findAllCompras(); 
-	
-	boolean isComprasCOMUnique(Integer id, String com);
+	boolean isAsignacionASIUnique(Integer id, String asi);
 
 }

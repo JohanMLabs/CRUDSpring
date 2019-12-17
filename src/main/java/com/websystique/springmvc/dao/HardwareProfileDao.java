@@ -2,14 +2,16 @@ package com.websystique.springmvc.dao;
 
 import java.util.List;
 
-import com.websystique.springmvc.model.UserProfile;
+import com.websystique.springmvc.model.Hardware;
+import com.websystique.springmvc.service.UserService;
 
 
-public interface UserProfileDao {
+public interface HardwareProfileDao {
 
-	List<UserProfile> findAll();
+	List<Hardware> findAllh();
 	
-	UserProfile findByType(String type);
 	
-	UserProfile findById(int id);
+	Hardware findByTypeh(String id);
+	
+	Hardware findByIdh(int id);
 }

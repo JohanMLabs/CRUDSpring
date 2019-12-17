@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Confirmación Registro Bodegas</title>
+	<title>Confirmación Registro Asignaciones</title>
 	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
@@ -19,7 +19,7 @@
 		</div>
 		
 		<span class="well floatRight">
-			Ir a <a href="<c:url value='/listb' />">Listar Bodegas</a>
+			Ir a <a href="<c:url value='/lista' />">Listar Asignaciones</a>
 		</span>
 	</div>
 </body>

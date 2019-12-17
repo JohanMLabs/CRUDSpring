@@ -7,64 +7,71 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.websystique.springmvc.dao.BodegaDao;
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.dao.HardwareDao;
+import com.websystique.springmvc.model.Hardware;
 
 
-@Service("bodegaService")
+@Service("hardwareService")
 @Transactional
-public class BodegaServiceImpl implements BodegaService{
+public class HardwareServiceImpl implements HardwareService{
 
 	@Autowired
-	private BodegaDao dao;
+	private HardwareDao dao;
 
 //	@Autowired
 //    private PasswordEncoder passwordEncoder;
 	
-	public Bodega findByIdb(int id) {
-		return dao.findByIdb(id);
+	public Hardware findByIdh(int id) {
+		return dao.findByIdh(id);
 	}
 
-	public Bodega findByBODEG(String bodeg) {
-		Bodega bodega = dao.findByBODEG(bodeg);
-		return bodega;
+	public Hardware findByHARD(String hard) {
+		Hardware hardware = dao.findByHARD(hard);
+		return hardware;
 	}
 
-	public void saveBodega(Bodega bodega) {
+	public void saveHardware(Hardware hardware) {
 		//user.setPassword(passwordEncoder.encode(user.getPassword()));
-		dao.saveb(bodega);
+		dao.saveh(hardware);
 	}
 
 	
-	public void updateBodega(Bodega bodega) {
-		Bodega entity = dao.findByIdb(bodega.getId());
+	public void updateHardware(Hardware hardware) {
+		Hardware entity = dao.findByIdh(hardware.getId());
 		if(entity!=null){
-			entity.setBodegId(bodega.getBodegId());
+			entity.setHardwareId(hardware.getHardwareId());
+			entity.setDescripcion(hardware.getDescripcion());
+			entity.setObservacion(hardware.getObservacion());
+			entity.setEstadoId(hardware.getEstadoId());
+			entity.setEstadoObjeto(hardware.getEstadoObjeto());
+			entity.setPrestamoId(hardware.getPrestamoId());
+			entity.setMarca(hardware.getMarca());
+			entity.setModelo(hardware.getModelo());
+			entity.setAsignacionId(hardware.getAsignacionId());
+			entity.setFechaCreado(hardware.getFechaCreado());
+			entity.setFechaModificado(hardware.getFechaModificado());
+			entity.setUserId(hardware.getUserId());
+			entity.setBodegaId(hardware.getBodegaId());
 			
-			entity.setUbicacion(bodega.getUbicacion());
-			entity.setDescripcion(bodega.getDescripcion());
-			entity.setFechaIngreso(bodega.getFechaIngreso());
-			//entity.setCorreo(user.getCorreo());
-			//entity.setUserProfiles(user.getUserProfiles());
 		}
 	}
 
 	
 	
 
-	public List<Bodega> findAllBodegas() {
-		return dao.findAllBodegas();
+	public List<Hardware> findAllhardwares() {
+		return dao.findAllhardwares();
 	}
 
-	public boolean isBodegaBODEGUnique(Integer id, String bodeg) {
-		Bodega bodega = findByBODEG(bodeg);
-		return ( bodega == null || ((id != null) && (bodega.getId() == id)));
+	public boolean isHardwareHARDUnique(Integer id, String hard) {
+		Hardware hardware = findByHARD(hard);
+		return ( hardware == null || ((id != null) && (hardware.getId() == id)));
 	}
 
     @Override
-    public void deleteBodegaByBODEG(String bodeg) {
+    public void deleteHardwareByHARD(String hard) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       dao.deleteByBODEG(bodeg);
+       dao.deleteByHARD(hard);
     }
 	
 }

@@ -18,8 +18,8 @@ public class ComprasServiceImpl implements ComprasService{
 	@Autowired
 	private ComprasDao dao;
 
-//	@Autowired
-//    private PasswordEncoder passwordEncoder;
+	//@Autowired
+    //private PasswordEncoder passwordEncoder;
 	
 	public Compras findByIdc(int id) {
 		return dao.findByIdc(id);
@@ -41,14 +41,17 @@ public class ComprasServiceImpl implements ComprasService{
 		if(entity!=null){
 			entity.setNombreId(compras.getNombreId());
 			
-		        entity.setDescripcion(compras.getDescripcion());
+			entity.setDescripcion(compras.getDescripcion());
 			entity.setFechaCompra(compras.getFechaCompra());
+			entity.setDepartamentoFK(compras.getDepartamentoFK());
 			
 		}
 	}
 
 	
-	
+	public void deleteComprasByCOM(String com) {
+		dao.deleteByCOM(com);
+	}
 
 	public List<Compras> findAllCompras() {
 		return dao.findAllCompras();
@@ -58,15 +61,5 @@ public class ComprasServiceImpl implements ComprasService{
 		Compras compras = findByCOM(com);
 		return ( compras == null || ((id != null) && (compras.getId() == id)));
 	}
-
-    @Override
-    public void deleteComprasByCOM(String com) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-         dao.deleteByCOM(com);
-    }
-
-    
-   
-
-  
+	
 }

@@ -10,53 +10,53 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.model.Estado;
 
 
 
-@Repository("bodegaDao")
-public class BodegaDaoImpl extends AbstractDao<Integer, Bodega> implements BodegaDao {
+@Repository("estadoDao")
+public class EstadoDaoImpl extends AbstractDao<Integer, Estado> implements EstadoDao {
 
-	static final Logger logger = LoggerFactory.getLogger(BodegaDaoImpl.class);
+	static final Logger logger = LoggerFactory.getLogger(EstadoDaoImpl.class);
 	
-	public Bodega findByIdb(int id) {
-		Bodega bodega = getByKey(id);
-		if(bodega!=null){
-			Hibernate.initialize(bodega.getId());
+	public Estado findByIde(int id) {
+		Estado estado = getByKey(id);
+		if(estado!=null){
+			Hibernate.initialize(estado.getId());
 		}
-		return bodega;
+		return estado;
 	}
 
-	public Bodega findByBODEG(String bodeg) {
-		logger.info("BODEG : {}", bodeg);
+	public Estado findByEST(String est) {
+		logger.info("est : {}", est);
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("bodegId", bodeg));
-		Bodega bodega = (Bodega)crit.uniqueResult();
-		if(bodega!=null){
-			Hibernate.initialize(bodega.getId());
+		crit.add(Restrictions.eq("estadoId", est));
+		Estado estado = (Estado)crit.uniqueResult();
+		if(estado!=null){
+			Hibernate.initialize(estado.getId());
 		}
-		return bodega;
+		return estado;
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Bodega> findAllBodegas() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("bodegId"));
+	public List<Estado> findAllEstados() {
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("estadoId"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-		List<Bodega> bodegas = (List<Bodega>) criteria.list();
+		List<Estado> estados = (List<Estado>) criteria.list();
 		
 		
-		return bodegas;
+		return estados;
 	}
 
-	public void saveb(Bodega bodega) {
-		persist(bodega);
+	public void savee(Estado estado) {
+		persist(estado);
 	}
 
-	public void deleteByBODEG(String bodeg) {
+	public void deleteByEST(String est) {
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("bodegId", bodeg));
-		Bodega bodega = (Bodega)crit.uniqueResult();
-		delete(bodega);
+		crit.add(Restrictions.eq("estadoId", est));
+		Estado estado = (Estado)crit.uniqueResult();
+		delete(estado);
 	}
 
     

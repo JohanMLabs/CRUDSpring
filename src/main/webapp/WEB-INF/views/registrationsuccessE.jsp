@@ -19,7 +19,7 @@
 		</div>
 		
 		<span class="well floatRight">
-			Ir a <a href="<c:url value='/listb' />">Listar Bodegas</a>
+			Ir a <a href="<c:url value='/liste' />">Listar Estados</a>
 		</span>
 	</div>
 </body>

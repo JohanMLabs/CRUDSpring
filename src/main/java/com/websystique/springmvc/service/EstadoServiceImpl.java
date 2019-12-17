@@ -7,64 +7,61 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.websystique.springmvc.dao.BodegaDao;
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.dao.EstadoDao;
+import com.websystique.springmvc.model.Estado;
 
 
-@Service("bodegaService")
+@Service("estadoService")
 @Transactional
-public class BodegaServiceImpl implements BodegaService{
+public class EstadoServiceImpl implements EstadoService{
 
 	@Autowired
-	private BodegaDao dao;
+	private EstadoDao dao;
 
 //	@Autowired
 //    private PasswordEncoder passwordEncoder;
 	
-	public Bodega findByIdb(int id) {
-		return dao.findByIdb(id);
+	public Estado findByIde(int id) {
+		return dao.findByIde(id);
 	}
 
-	public Bodega findByBODEG(String bodeg) {
-		Bodega bodega = dao.findByBODEG(bodeg);
-		return bodega;
+	public Estado findByEST(String est) {
+		Estado estado = dao.findByEST(est);
+		return estado;
 	}
 
-	public void saveBodega(Bodega bodega) {
+	public void saveEstado(Estado estado) {
 		//user.setPassword(passwordEncoder.encode(user.getPassword()));
-		dao.saveb(bodega);
+		dao.savee(estado);
 	}
 
 	
-	public void updateBodega(Bodega bodega) {
-		Bodega entity = dao.findByIdb(bodega.getId());
+	public void updateEstado(Estado estado) {
+		Estado entity = dao.findByIde(estado.getId());
 		if(entity!=null){
-			entity.setBodegId(bodega.getBodegId());
+			entity.setEstadoId(estado.getEstadoId());
 			
-			entity.setUbicacion(bodega.getUbicacion());
-			entity.setDescripcion(bodega.getDescripcion());
-			entity.setFechaIngreso(bodega.getFechaIngreso());
-			//entity.setCorreo(user.getCorreo());
-			//entity.setUserProfiles(user.getUserProfiles());
+			entity.setNombreEstado(estado.getNombreEstado());
+			
 		}
 	}
 
 	
 	
 
-	public List<Bodega> findAllBodegas() {
-		return dao.findAllBodegas();
+	public List<Estado> findAllEstados() {
+		return dao.findAllEstados();
 	}
 
-	public boolean isBodegaBODEGUnique(Integer id, String bodeg) {
-		Bodega bodega = findByBODEG(bodeg);
-		return ( bodega == null || ((id != null) && (bodega.getId() == id)));
+	public boolean isEstadoESTUnique(Integer id, String est) {
+		Estado estado = findByEST(est);
+		return ( estado == null || ((id != null) && (estado.getId() == id)));
 	}
 
     @Override
-    public void deleteBodegaByBODEG(String bodeg) {
+    public void deleteEstadoByEST(String est) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       dao.deleteByBODEG(bodeg);
+       dao.deleteByEST(est);
     }
 	
 }

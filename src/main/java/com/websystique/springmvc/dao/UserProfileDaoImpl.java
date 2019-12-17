@@ -8,6 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.websystique.springmvc.model.UserProfile;
+import com.websystique.springmvc.service.UserService;
 
 
 

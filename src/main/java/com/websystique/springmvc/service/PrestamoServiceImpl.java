@@ -7,43 +7,44 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.websystique.springmvc.dao.BodegaDao;
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.dao.PrestamoDao;
+import com.websystique.springmvc.model.Prestamo;
 
 
-@Service("bodegaService")
+@Service("prestamoService")
 @Transactional
-public class BodegaServiceImpl implements BodegaService{
+public class PrestamoServiceImpl implements PrestamoService{
 
 	@Autowired
-	private BodegaDao dao;
+	private PrestamoDao dao;
 
 //	@Autowired
 //    private PasswordEncoder passwordEncoder;
 	
-	public Bodega findByIdb(int id) {
-		return dao.findByIdb(id);
+	public Prestamo findByIdp(int id) {
+		return dao.findByIdp(id);
 	}
 
-	public Bodega findByBODEG(String bodeg) {
-		Bodega bodega = dao.findByBODEG(bodeg);
-		return bodega;
+	public Prestamo findByPRES(String pres) {
+		Prestamo prestamo = dao.findByPRES(pres);
+		return prestamo;
 	}
 
-	public void saveBodega(Bodega bodega) {
+	public void savePrestamo(Prestamo prestamo) {
 		//user.setPassword(passwordEncoder.encode(user.getPassword()));
-		dao.saveb(bodega);
+		dao.savep(prestamo);
 	}
 
 	
-	public void updateBodega(Bodega bodega) {
-		Bodega entity = dao.findByIdb(bodega.getId());
+	public void updatePrestamo(Prestamo prestamo) {
+		Prestamo entity = dao.findByIdp(prestamo.getId());
 		if(entity!=null){
-			entity.setBodegId(bodega.getBodegId());
+			entity.setPrestamoId(prestamo.getPrestamoId());
 			
-			entity.setUbicacion(bodega.getUbicacion());
-			entity.setDescripcion(bodega.getDescripcion());
-			entity.setFechaIngreso(bodega.getFechaIngreso());
+			entity.setUsuario(prestamo.getUsuario());
+			entity.setEstado(prestamo.getEstado());
+			entity.setFechaCreado(prestamo.getFechaCreado());
+			entity.setFechaModificado(prestamo.getFechaModificado());
 			//entity.setCorreo(user.getCorreo());
 			//entity.setUserProfiles(user.getUserProfiles());
 		}
@@ -52,19 +53,19 @@ public class BodegaServiceImpl implements BodegaService{
 	
 	
 
-	public List<Bodega> findAllBodegas() {
-		return dao.findAllBodegas();
+	public List<Prestamo> findAllPrestamos() {
+		return dao.findAllPrestamos();
 	}
 
-	public boolean isBodegaBODEGUnique(Integer id, String bodeg) {
-		Bodega bodega = findByBODEG(bodeg);
-		return ( bodega == null || ((id != null) && (bodega.getId() == id)));
+	public boolean isPrestamoPRESUnique(Integer id, String pres) {
+		Prestamo prestamo = findByPRES(pres);
+		return ( prestamo == null || ((id != null) && (prestamo.getId() == id)));
 	}
 
     @Override
-    public void deleteBodegaByBODEG(String bodeg) {
+    public void deletePrestamoByPRES(String pres) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       dao.deleteByBODEG(bodeg);
+       dao.deleteByPRES(pres);
     }
 	
 }

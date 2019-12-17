@@ -7,7 +7,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Listar Usuarios</title>
+        <title>Listar Bodegas</title>
         <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
         <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
     </head>
@@ -63,7 +63,9 @@
                     </tbody>
                 </table>
             </div>
-
+ <span class="well floatRight">
+                Ir a <a href="<c:url value='/menu' />">Volver al Menu</a>
+            </span>
         </div>
            
     </body>

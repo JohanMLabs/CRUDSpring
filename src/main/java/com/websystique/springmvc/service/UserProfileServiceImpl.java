@@ -28,4 +28,5 @@ public class UserProfileServiceImpl implements UserProfileService{
 	public List<UserProfile> findAll() {
 		return dao.findAll();
 	}
+     
 }

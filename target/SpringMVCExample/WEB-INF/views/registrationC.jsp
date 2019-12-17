@@ -7,7 +7,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Formulario de registro bodegas</title>
+        <title>Formulario de registro Compras</title>
         <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
         <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
     </head>
@@ -16,11 +16,11 @@
         <div class="generic-container">
             <%@include file="authheader.jsp" %>
 
-            <div class="well lead">Registrar Bodegas</div>
-            <form:form method="POST" modelAttribute="compra" class="form-horizontal">
+            <div class="well lead">Registrar Compras</div>
+            <form:form method="POST" modelAttribute="compras" class="form-horizontal">
                 <form:input type="hidden" path="id" id="id"/>
 
-           
+
 
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -33,14 +33,14 @@
                         </div>
                     </div>
                 </div>
-                
+
 
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-3 control-lable" for="nombreId">Nombre ID</label>
                         <div class="col-md-7">
                             <c:choose>
-                                <c:when test="${edit}">
+                                <c:when test="${editC}">
                                     <form:input type="text" path="nombreId" id="nombreId" class="form-control input-sm" disabled="true"/>
                                 </c:when>
                                 <c:otherwise>
@@ -55,9 +55,9 @@
                 </div>
 
 
-<div class="row">
+                <div class="row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-3 control-lable" for="fechaCompra">Fecha de Ingreso:</label>
+                        <label class="col-md-3 control-lable" for="fechaCompra">Fecha de Compras:</label>
                         <div class="col-md-7">
                             <form:input type="date" path="fechaCompra" id="fechaCompra" class="form-control input-sm"/>
                             <div class="has-error">
@@ -66,6 +66,27 @@
                         </div>
                     </div>
                 </div>
+             <div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-3 control-lable">Departamentos</label>
+					<div class="col-md-7">
+						<form:select for="departamentoFK" type="departamentoFK" path="departamentoFK" id="departamentoFK" class="form-control input-sm">
+                                                    <form:option value="NULL" type="text" label="----Seleccione----"/>
+                                                    <form:option value="Desarrollo" type="text" label="Desarrollo"/>
+                                                    <form:option value="Recursos Humanos" type="text" label="Recursos Humanos"/>
+                                                    <form:option value="Administrativo" type="text" label="Administrativo"/>
+                                                    <form:option value="Tecnologia" type="text" label="Tecnologia"/>
+                                                    <form:option value="Contabilidad" type="text" label="Contabilidad"/>
+                                                    <form:option value="Marketing" type="text" label="Marketing"/>
+                                                    
+                                              </form:select>
+						<div class="has-error">
+							<form:errors path="departamentoFK" class="help-inline"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 
 
                 <div class="row">

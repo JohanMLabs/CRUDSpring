@@ -2,23 +2,23 @@ package com.websystique.springmvc.service;
 
 import java.util.List;
 
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.model.Prestamo;
 
 
-public interface BodegaService {
+public interface PrestamoService {
 	
-	Bodega findByIdb(int id);
+	Prestamo findByIdp(int id);
 	
-	Bodega findByBODEG(String bodeg);
+	Prestamo findByPRES(String pres);
 	
-	void saveBodega(Bodega bodega);
+	void savePrestamo(Prestamo prestamo);
 	
-	void updateBodega(Bodega bodega);
+	void updatePrestamo(Prestamo prestamo);
 	
-	void deleteBodegaByBODEG(String bodeg);
+	void deletePrestamoByPRES(String pres);
 
-	List<Bodega> findAllBodegas(); 
+	List<Prestamo> findAllPrestamos(); 
 	
-	boolean isBodegaBODEGUnique(Integer id, String bodeg);
+	boolean isPrestamoPRESUnique(Integer id, String pres);
 
 }

@@ -10,55 +10,62 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.model.Hardware;
+import org.springframework.data.jdbc.repository.query.Query;
 
 
 
-@Repository("bodegaDao")
-public class BodegaDaoImpl extends AbstractDao<Integer, Bodega> implements BodegaDao {
+@Repository("hardwareDao")
+public class HardwareDaoImpl extends AbstractDao<Integer, Hardware> implements HardwareDao {
 
-	static final Logger logger = LoggerFactory.getLogger(BodegaDaoImpl.class);
+	static final Logger logger = LoggerFactory.getLogger(HardwareDaoImpl.class);
 	
-	public Bodega findByIdb(int id) {
-		Bodega bodega = getByKey(id);
-		if(bodega!=null){
-			Hibernate.initialize(bodega.getId());
+	public Hardware findByIdh(int id) {
+		Hardware hardware = getByKey(id);
+		if(hardware!=null){
+			Hibernate.initialize(hardware.getId());
 		}
-		return bodega;
+		return hardware;
 	}
 
-	public Bodega findByBODEG(String bodeg) {
-		logger.info("BODEG : {}", bodeg);
+	public Hardware findByHARD(String hard) {
+		logger.info("HARD : {}", hard);
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("bodegId", bodeg));
-		Bodega bodega = (Bodega)crit.uniqueResult();
-		if(bodega!=null){
-			Hibernate.initialize(bodega.getId());
+		crit.add(Restrictions.eq("hardwareId", hard));
+		Hardware hardware = (Hardware)crit.uniqueResult();
+		if(hardware!=null){
+			Hibernate.initialize(hardware.getId());
 		}
-		return bodega;
+		return hardware;
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Bodega> findAllBodegas() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("bodegId"));
+	public List<Hardware> findAllhardwares() {
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("hardwareId"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-		List<Bodega> bodegas = (List<Bodega>) criteria.list();
+		List<Hardware> hardwares = (List<Hardware>) criteria.list();
 		
 		
-		return bodegas;
+		return hardwares;
 	}
 
-	public void saveb(Bodega bodega) {
-		persist(bodega);
+	public void saveh(Hardware hardware) {
+		persist(hardware);
 	}
 
-	public void deleteByBODEG(String bodeg) {
+	public void deleteByHARD(String hard) {
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("bodegId", bodeg));
-		Bodega bodega = (Bodega)crit.uniqueResult();
-		delete(bodega);
-	}
+		crit.add(Restrictions.eq("hardwareId", hard));
+		Hardware hardware = (Hardware)crit.uniqueResult();
+		delete(hardware);
+        }
+        
 
-    
-
+//        public Hardware getHardwareByIdWithNamedQuery(Long id) {
+//    Query namedQuery;
+//            namedQuery = getEntityManager().createNamedQuery("Hardware.findByIdg");
+//    namedQuery.setParameter("hardwareId", id);
+//    return (Hardware) namedQuery.getSingleResult();
+//}
+  
 }

@@ -46,6 +46,7 @@ public class UserServiceImpl implements UserService{
 			entity.setNombre(user.getNombre());
 			entity.setApellido(user.getApellido());
 			entity.setCorreo(user.getCorreo());
+			entity.setDepartamentoFK(user.getDepartamentoFK());
 			entity.setUserProfiles(user.getUserProfiles());
 		}
 	}

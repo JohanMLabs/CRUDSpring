@@ -7,28 +7,29 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.websystique.springmvc.model.UserProfile;
+import com.websystique.springmvc.model.Hardware;
+import com.websystique.springmvc.service.HardwareService;
 
 
 
-@Repository("userProfileDao")
-public class UserProfileDaoImpl extends AbstractDao<Integer, UserProfile>implements UserProfileDao{
+@Repository("hardwareProfileDao")
+public class HardwareProfileDaoImpl extends AbstractDao<Integer, Hardware>implements HardwareProfileDao{
 
-	public UserProfile findById(int id) {
+	public Hardware findByIdh(int id) {
 		return getByKey(id);
 	}
 
-	public UserProfile findByType(String type) {
+	public Hardware findByTypeh(String id) {
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("type", type));
-		return (UserProfile) crit.uniqueResult();
+		crit.add(Restrictions.eq("id", id));
+		return (Hardware) crit.uniqueResult();
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<UserProfile> findAll(){
+	public List<Hardware> findAllh(){
 		Criteria crit = createEntityCriteria();
-		crit.addOrder(Order.asc("type"));
-		return (List<UserProfile>)crit.list();
+		crit.addOrder(Order.asc("id"));
+		return (List<Hardware>)crit.list();
 	}
 	
 }

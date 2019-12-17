@@ -10,53 +10,53 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.model.Asignacion;
 
 
 
-@Repository("bodegaDao")
-public class BodegaDaoImpl extends AbstractDao<Integer, Bodega> implements BodegaDao {
+@Repository("asignacionDao")
+public class AsignacionDaoImpl extends AbstractDao<Integer, Asignacion> implements AsignacionDao {
 
-	static final Logger logger = LoggerFactory.getLogger(BodegaDaoImpl.class);
+	static final Logger logger = LoggerFactory.getLogger(AsignacionDaoImpl.class);
 	
-	public Bodega findByIdb(int id) {
-		Bodega bodega = getByKey(id);
-		if(bodega!=null){
-			Hibernate.initialize(bodega.getId());
+	public Asignacion findByIda(int id) {
+		Asignacion asignacion = getByKey(id);
+		if(asignacion!=null){
+			Hibernate.initialize(asignacion.getId());
 		}
-		return bodega;
+		return asignacion;
 	}
 
-	public Bodega findByBODEG(String bodeg) {
-		logger.info("BODEG : {}", bodeg);
+	public Asignacion findByASI(String asi) {
+		logger.info("ASI : {}", asi);
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("bodegId", bodeg));
-		Bodega bodega = (Bodega)crit.uniqueResult();
-		if(bodega!=null){
-			Hibernate.initialize(bodega.getId());
+		crit.add(Restrictions.eq("asignacionId", asi));
+		Asignacion asignacion = (Asignacion)crit.uniqueResult();
+		if(asignacion!=null){
+			Hibernate.initialize(asignacion.getId());
 		}
-		return bodega;
+		return asignacion;
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Bodega> findAllBodegas() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("bodegId"));
+	public List<Asignacion> findAllAsignaciones() {
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("asignacionId"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-		List<Bodega> bodegas = (List<Bodega>) criteria.list();
+		List<Asignacion> asignacion = (List<Asignacion>) criteria.list();
 		
 		
-		return bodegas;
+		return asignacion;
 	}
 
-	public void saveb(Bodega bodega) {
-		persist(bodega);
+	public void savea(Asignacion asignacion) {
+		persist(asignacion);
 	}
 
-	public void deleteByBODEG(String bodeg) {
+	public void deleteByASI(String asi) {
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("bodegId", bodeg));
-		Bodega bodega = (Bodega)crit.uniqueResult();
-		delete(bodega);
+		crit.add(Restrictions.eq("asignacionId", asi));
+		Asignacion asignacion = (Asignacion)crit.uniqueResult();
+		delete(asignacion);
 	}
 
     

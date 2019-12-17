@@ -2,23 +2,23 @@ package com.websystique.springmvc.service;
 
 import java.util.List;
 
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.model.Hardware;
 
 
-public interface BodegaService {
+public interface HardwareService {
 	
-	Bodega findByIdb(int id);
+	Hardware findByIdh(int id);
 	
-	Bodega findByBODEG(String bodeg);
+	Hardware findByHARD(String hard);
 	
-	void saveBodega(Bodega bodega);
+	void saveHardware(Hardware hardware);
 	
-	void updateBodega(Bodega bodega);
+	void updateHardware(Hardware hardware);
 	
-	void deleteBodegaByBODEG(String bodeg);
+	void deleteHardwareByHARD(String hard);
 
-	List<Bodega> findAllBodegas(); 
+	List<Hardware> findAllhardwares(); 
 	
-	boolean isBodegaBODEGUnique(Integer id, String bodeg);
+	boolean isHardwareHARDUnique(Integer id, String hard);
 
 }

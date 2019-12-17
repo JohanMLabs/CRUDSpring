@@ -2,20 +2,20 @@ package com.websystique.springmvc.dao;
 
 import java.util.List;
 
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.model.Asignacion;
 
 
-public interface BodegaDao {
+public interface AsignacionDao {
 
-	Bodega findByIdb(int id);
+	Asignacion findByIda(int id);
 	
-	Bodega findByBODEG(String bodeg);
+	Asignacion findByASI(String asi);
 	
-	void saveb(Bodega bodega);
+	void savea(Asignacion asignacion);
 	
-	void deleteByBODEG(String bodeg);
+	void deleteByASI(String ASI);
 	
-	List<Bodega> findAllBodegas();
+	List<Asignacion> findAllAsignaciones();
 
 }
 

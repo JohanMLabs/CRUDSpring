@@ -1,21 +1,24 @@
+
 package com.websystique.springmvc.dao;
 
 import java.util.List;
 
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.model.Hardware;
 
 
-public interface BodegaDao {
+public interface HardwareDao {
 
-	Bodega findByIdb(int id);
+	Hardware findByIdh(int id);
 	
-	Bodega findByBODEG(String bodeg);
+	Hardware findByHARD(String hard);
 	
-	void saveb(Bodega bodega);
+	void saveh(Hardware hardware);
 	
-	void deleteByBODEG(String bodeg);
+	void deleteByHARD(String hard);
 	
-	List<Bodega> findAllBodegas();
+	List<Hardware> findAllhardwares();
+        
+//        Hardware getHardwareByIdWithNamedQuery(Long id);
+        
 
 }
-

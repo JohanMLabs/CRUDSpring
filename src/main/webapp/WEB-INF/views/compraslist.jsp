@@ -33,6 +33,7 @@
                           
                             <th>Descripción:</th>
                             <th>Fecha de Compra:</th>
+                            <th>Departamento :</th>
 
                                 <sec:authorize access="hasRole('ADMIN')">
                                 <th width="100"></th>
@@ -51,20 +52,22 @@
                                 
                                 <td>${compra.descripcion}</td>
                                 <td>${compra.fechaCompra}</td>
-                                
+                                <td>${compra.departamentoFK}</td>
+                              alasñxp<ñ<
                               <sec:authorize access="hasRole('ADMIN')">
-                                    <td><a href="<c:url value='/edit-bodega-${compra.nombreId}' />" class="btn btn-warning custom-width">Editar</a></td>
+                                    <td><a href="<c:url value='/edit-compras-${compra.nombreId}' />" class="btn btn-warning custom-width">Editar</a></td>
                                 </sec:authorize>
                                 <sec:authorize access="hasRole('ADMIN')">
-                                    <td><a href="<c:url value='/delete-bodega-${compra.nombreId}' />" class="btn btn-danger custom-width">Eliminar</a></td>
+                                    <td><a href="<c:url value='/delete-compras-${compra.nombreId}' />" class="btn btn-danger custom-width">Eliminar</a></td>
                                 </sec:authorize>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
             </div>
-
-        </div>
+ <span class="well floatRight">
+                Ir a <a href="<c:url value='/menu' />">Volver al Menu</a>
+            </span>
            
     </body>
 </html>

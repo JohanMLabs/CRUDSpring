@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 import com.websystique.springmvc.model.Compras;
 
 
-
 @Repository("comprasDao")
 public class ComprasDaoImpl extends AbstractDao<Integer, Compras> implements ComprasDao {
 
@@ -22,7 +21,7 @@ public class ComprasDaoImpl extends AbstractDao<Integer, Compras> implements Com
 	public Compras findByIdc(int id) {
 		Compras compras = getByKey(id);
 		if(compras!=null){
-			Hibernate.initialize(compras.getId());
+			Hibernate.initialize(compras.getNombreId());
 		}
 		return compras;
 	}
@@ -33,7 +32,7 @@ public class ComprasDaoImpl extends AbstractDao<Integer, Compras> implements Com
 		crit.add(Restrictions.eq("nombreId", com));
 		Compras compras = (Compras)crit.uniqueResult();
 		if(compras!=null){
-			Hibernate.initialize(compras.getId());
+			Hibernate.initialize(compras.getNombreId());
 		}
 		return compras;
 	}
@@ -58,7 +57,5 @@ public class ComprasDaoImpl extends AbstractDao<Integer, Compras> implements Com
 		Compras compras = (Compras)crit.uniqueResult();
 		delete(compras);
 	}
-
-    
 
 }

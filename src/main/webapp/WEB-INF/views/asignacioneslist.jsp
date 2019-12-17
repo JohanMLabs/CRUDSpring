@@ -7,7 +7,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Listar Usuarios</title>
+        <title>Listar Asignaciones</title>
         <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
         <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
     </head>
@@ -19,20 +19,21 @@
             <div class="panel panel-default">
                 <!-- Default panel contents -->
             
-                <div class="panel-heading"><span class="lead">Lista de Bodegas</span></div>
+                <div class="panel-heading"><span class="lead">Lista de Asignaciones</span></div>
                 <sec:authorize access="hasRole('ADMIN')">
                     <div class="well">
-                        <a class="btn btn-success" href="<c:url value='/newbodega' />">Agregar Bodega</a>
+                        <a class="btn btn-success" href="<c:url value='/newasignacion' />">Agregar Asignacion</a>
                     </div>
                 </sec:authorize>
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Bodega Id:</th>
-                            <th>Ubicación:</th>
-                            <th>Descripción:</th>
-                            <th>Fecha de Ingreso:</th>
+                            <th>Asignacion Id:</th>
+                            <th>Usuario:</th>
+                            <th>Fecha Creado:</th>
+                            <th>Fecha Modificado:</th>
+                            <th>Hardware:</th>
 
                                 <sec:authorize access="hasRole('ADMIN')">
                                 <th width="100"></th>
@@ -44,26 +45,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${bodegas}" var="bodega">
+                        <c:forEach items="${asignaciones}" var="asignacion">
                             <tr>
-                                <td>${bodega.id}</td>
-                                <td>${bodega.bodegId}</td>
-                                <td>${bodega.ubicacion}</td>
-                                <td>${bodega.descripcion}</td>
-                                <td>${bodega.fechaIngreso}</td>
+                                <td>${asignacion.id}</td>
+                                <td>${asignacion.asignacionId}</td>
+                                <td>${asignacion.usuarioFk}</td>
+                                <td>${asignacion.fechaCreado}</td>
+                                <td>${asignacion.fechaModificado}</td>
+                                <td>${asignacion.hardwareFk}</td>
                                 
                               <sec:authorize access="hasRole('ADMIN')">
-                                    <td><a href="<c:url value='/edit-bodega-${bodega.bodegId}' />" class="btn btn-warning custom-width">Editar</a></td>
+                                    <td><a href="<c:url value='/edit-asignacion-${asignacion.asignacionId}' />" class="btn btn-warning custom-width">Editar</a></td>
                                 </sec:authorize>
                                 <sec:authorize access="hasRole('ADMIN')">
-                                    <td><a href="<c:url value='/delete-bodega-${bodega.bodegId}' />" class="btn btn-danger custom-width">Eliminar</a></td>
+                                    <td><a href="<c:url value='/delete-asignacion-${asignacion.asignacionId}' />" class="btn btn-danger custom-width">Eliminar</a></td>
                                 </sec:authorize>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
             </div>
-
+ <span class="well floatRight">
+                Ir a <a href="<c:url value='/menu' />">Volver al Menu</a>
+            </span>
         </div>
            
     </body>

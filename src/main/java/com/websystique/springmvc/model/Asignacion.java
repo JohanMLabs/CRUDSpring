@@ -18,24 +18,38 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="APP_COMPRAS")
-public class Compras implements Serializable{
+@Table(name="APP_ASIGNACION")
+public class Asignacion implements Serializable{
 
     
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	@NotEmpty
-	@Column(name="nombre_ID", unique=true, nullable=false)
-	private String nombreId;
+	@Column(name="ASIGNACION_ID", unique=true, nullable=false)
+	private String asignacionId;
 	
 		
 	@NotEmpty
-	@Column(name="DESCRIPCION", nullable=false)
-	private String descripcion;
+	@Column(name="USUARIOFK", nullable=false)
+	private String usuarioFk;
 	@NotEmpty
-	@Column(name="FECHACOMPRA", nullable=false)
-	private String fechaCompra;
+	@Column(name="FECHACREADO", nullable=false)
+	private String fechaCreado;
+	@NotEmpty
+	@Column(name="FECHAMODIFICADO", nullable=false)
+	private String fechaModificado;
+	@NotEmpty
+	@Column(name="HARDWAREFK", nullable=false)
+	private String hardwareFk;
+
+    public String getHardwareFk() {
+        return hardwareFk;
+    }
+
+    public void setHardwareFk(String hardwareFk) {
+        this.hardwareFk = hardwareFk;
+    }
 
     public Integer getId() {
         return id;
@@ -45,32 +59,39 @@ public class Compras implements Serializable{
         this.id = id;
     }
 
-    public String getNombreId() {
-        return nombreId;
+    public String getAsignacionId() {
+        return asignacionId;
     }
 
-    public void setNombreId(String nombreId) {
-        this.nombreId = nombreId;
+    public void setAsignacionId(String asignacionId) {
+        this.asignacionId = asignacionId;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getUsuarioFk() {
+        return usuarioFk;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setUsuarioFk(String usuarioFk) {
+        this.usuarioFk = usuarioFk;
     }
 
-    public String getFechaCompra() {
-        return fechaCompra;
+    public String getFechaCreado() {
+        return fechaCreado;
     }
 
-    public void setFechaCompra(String fechaCompra) {
-        this.fechaCompra = fechaCompra;
+    public void setFechaCreado(String fechaCreado) {
+        this.fechaCreado = fechaCreado;
     }
 
+    public String getFechaModificado() {
+        return fechaModificado;
+    }
 
-	
+    public void setFechaModificado(String fechaModificado) {
+        this.fechaModificado = fechaModificado;
+    }
+
+   
 
 
 	
@@ -81,7 +102,7 @@ public class Compras implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nombreId == null) ? 0 : nombreId.hashCode());
+		result = prime * result + ((asignacionId == null) ? 0 : asignacionId.hashCode());
 		return result;
 	}
 
@@ -91,18 +112,18 @@ public class Compras implements Serializable{
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof User))
+		if (!(obj instanceof Asignacion))
 			return false;
-		Compras other = (Compras) obj;
+		Asignacion other = (Asignacion) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nombreId == null) {
-			if (other.nombreId != null)
+		if (asignacionId == null) {
+			if (other.asignacionId != null)
 				return false;
-		} else if (!nombreId.equals(other.nombreId))
+		} else if (!asignacionId.equals(other.asignacionId))
 			return false;
 		return true;
 	}
@@ -110,7 +131,7 @@ public class Compras implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Compras [id=" + id + ", nombreId=" + nombreId + ", descripcion=" + descripcion + "]";
+		return "Asignacion [id=" + id + ", asignacionId=" + asignacionId + ", usuarioFk=" + usuarioFk +", hardwareFk=" + hardwareFk + "]";
 	}
 
 

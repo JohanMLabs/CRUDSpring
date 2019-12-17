@@ -16,22 +16,24 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import com.websystique.springmvc.converter.RoleToUserProfileConverter;
+
+
 import org.springframework.stereotype.Component;
 
 @Configuration
+
 @EnableWebMvc
- // @ComponentScan({"com.websystique.springmvc.converter", "com.websystique.springmvc.service"})
+// @ComponentScan({"com.websystique.springmvc.converter", "com.websystique.springmvc.service"})
 @ComponentScan(basePackages = "com.websystique.springmvc")
 
 @Component
-  
 
-   //@ComponentScan(basePackages = "com.websystique.springmvc.converter")
+//@ComponentScan(basePackages = "com.websystique.springmvc.converter")
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     RoleToUserProfileConverter roleToUserProfileConverter;
- 
+
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
 
@@ -60,8 +62,10 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return messageSource;
     }
 
+
     @Override
     public void configurePathMatch(PathMatchConfigurer matcher) {
         matcher.setUseRegisteredSuffixPatternMatch(true);
     }
+
 }

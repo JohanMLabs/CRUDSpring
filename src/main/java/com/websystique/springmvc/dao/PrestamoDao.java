@@ -2,20 +2,20 @@ package com.websystique.springmvc.dao;
 
 import java.util.List;
 
-import com.websystique.springmvc.model.Bodega;
+import com.websystique.springmvc.model.Prestamo;
 
 
-public interface BodegaDao {
+public interface PrestamoDao {
 
-	Bodega findByIdb(int id);
+	Prestamo findByIdp(int id);
 	
-	Bodega findByBODEG(String bodeg);
+	Prestamo findByPRES(String pres);
 	
-	void saveb(Bodega bodega);
+	void savep(Prestamo prestamo);
 	
-	void deleteByBODEG(String bodeg);
+	void deleteByPRES(String pres);
 	
-	List<Bodega> findAllBodegas();
+	List<Prestamo> findAllPrestamos();
 
 }
 

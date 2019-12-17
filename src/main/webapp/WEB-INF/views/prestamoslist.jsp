@@ -7,7 +7,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Listar Usuarios</title>
+        <title>Listar Prestamos</title>
         <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
         <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
     </head>
@@ -18,30 +18,22 @@
             <%@include file="authheader.jsp" %>	
             <div class="panel panel-default">
                 <!-- Default panel contents -->
+
+                <div class="panel-heading"><span class="lead">Lista de Prestamos</span></div>
                 <sec:authorize access="hasRole('ADMIN')">
                     <div class="well">
-                        <a class="btn btn-success" href="<c:url value='/listb' />"> Bodega</a>
-                    </div>
-                </sec:authorize>
-                <sec:authorize access="hasRole('ADMIN')">
-                    <div class="well">
-                        <a class="btn btn-success" href="<c:url value='/listc' />"> Compras</a>
-                    </div>
-                </sec:authorize>
-                <div class="panel-heading"><span class="lead">Lista de Usuarios</span></div>
-                <sec:authorize access="hasRole('ADMIN')">
-                    <div class="well">
-                        <a class="btn btn-success" href="<c:url value='/newuser' />">Agregara Usuario</a>
+                        <a class="btn btn-success" href="<c:url value='/newprestamo' />">Agregar Prestamo</a>
                     </div>
                 </sec:authorize>
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Correo</th>
-                            <th>USU ID</th>
+                            <th>Id:</th>
+                            <th>Usuario:</th>
+                            <th>Estado:</th>
+                            <th>Fecha Creado:</th>
+                            <th>Fecha Modificado:</th>
+                            <th>Prestamo ID:</th>
                                 <sec:authorize access="hasRole('ADMIN')">
                                 <th width="100"></th>
                                 </sec:authorize>
@@ -52,26 +44,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${users}" var="user">
+                        <c:forEach items="${prestamos}" var="prestamo">
                             <tr>
-                                <td>${user.id}</td>
-                                <td>${user.nombre}</td>
-                                <td>${user.apellido}</td>
-                                <td>${user.correo}</td>
-                                <td>${user.usuId}</td>
+                                <td>${prestamo.id}</td>
+                                <td>${prestamo.usuario}</td>
+                                <td>${prestamo.estado}</td>
+                                <td>${prestamo.fechaCreado}</td>
+                                <td>${prestamo.fechaModificado}</td>
+                                <td>${prestamo.prestamoId}</td>
                                 <sec:authorize access="hasRole('ADMIN')">
-                                    <td><a href="<c:url value='/edit-user-${user.usuId}' />" class="btn btn-warning custom-width">Editar</a></td>
+                                    <td><a href="<c:url value='/edit-prestamo-${prestamo.prestamoId}' />" class="btn btn-warning custom-width">Editar</a></td>
                                 </sec:authorize>
                                 <sec:authorize access="hasRole('ADMIN')">
-                                    <td><a href="<c:url value='/delete-user-${user.usuId}' />" class="btn btn-danger custom-width">Eliminar</a></td>
+                                    <td><a href="<c:url value='/delete-prestamo-${prestamo.prestamoId}' />" class="btn btn-danger custom-width">Eliminar</a></td>
                                 </sec:authorize>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
             </div>
-
+            <span class="well floatRight">
+                Ir a <a href="<c:url value='/menu' />">Volver al Menu</a>
+            </span>
         </div>
-           
+
     </body>
 </html>

@@ -13,12 +13,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
 @Configuration
 @EnableTransactionManagement
+
+
 @ComponentScan({ "com.websystique.springmvc.configuration" })
 @PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration {
@@ -36,13 +40,15 @@ public class HibernateConfiguration {
      }
 	
     @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
-        dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
-        dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
-        dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
-        return dataSource;
+   public DataSource dataSource() {
+   DriverManagerDataSource dataSource = new DriverManagerDataSource();
+   dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
+   dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
+   dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
+     dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
+      return dataSource;
+           //    EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+        //return builder.setType(EmbeddedDatabaseType.HSQL).build();
     }
     
     private Properties hibernateProperties() {
@@ -60,5 +66,8 @@ public class HibernateConfiguration {
        txManager.setSessionFactory(s);
        return txManager;
     }
+    
+    
+ 
 }
 

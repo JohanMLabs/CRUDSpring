@@ -36,7 +36,20 @@ public class Compras implements Serializable{
 	@NotEmpty
 	@Column(name="FECHACOMPRA", nullable=false)
 	private String fechaCompra;
+        
+	    @NotEmpty
+	@Column(name="departamentoFK", nullable=false)
+	private String departamentoFK;
 
+    public String getDepartamentoFK() {
+        return departamentoFK;
+    }
+
+    public void setDepartamentoFK(String departamentoFK) {
+        this.departamentoFK = departamentoFK;
+    }
+        
+	
     public Integer getId() {
         return id;
     }
@@ -69,9 +82,7 @@ public class Compras implements Serializable{
         this.fechaCompra = fechaCompra;
     }
 
-
-	
-
+   
 
 	
 
@@ -91,7 +102,7 @@ public class Compras implements Serializable{
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof User))
+		if (!(obj instanceof Compras))
 			return false;
 		Compras other = (Compras) obj;
 		if (id == null) {
@@ -110,7 +121,7 @@ public class Compras implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Compras [id=" + id + ", nombreId=" + nombreId + ", descripcion=" + descripcion + "]";
+		return "Compras [id=" + id + ", nombreId=" + nombreId + ", descripcion=" + descripcion +", departamentoFK=" + departamentoFK + "]";
 	}
 
 

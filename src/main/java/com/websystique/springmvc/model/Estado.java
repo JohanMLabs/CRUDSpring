@@ -18,36 +18,20 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="APP_BODEGA")
-public class Bodega implements Serializable{
+@Table(name="APP_ESTADO")
+public class Estado implements Serializable{
 
     
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	@NotEmpty
-	@Column(name="bodeg_ID", unique=true, nullable=false)
-	private String bodegId;
+	@Column(name="ESTADO_ID", unique=true, nullable=false)
+	private String estadoId;
 	
 	@NotEmpty
-	@Column(name="UBICACION", unique=true, nullable=false)
-	private String ubicacion;
-		
-	@NotEmpty
-	@Column(name="DESCRIPCION", nullable=false)
-	private String descripcion;
-	@NotEmpty
-	@Column(name="FECHAINGRESO", nullable=false)
-	private String fechaIngreso;
-
-    public String getFechaIngreso() {
-        return fechaIngreso;
-    }
-
-    public void setFechaIngreso(String fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
-        
+	@Column(name="NOMBREESTADO", unique=true, nullable=false)
+	private String nombreEstado;
 
     public Integer getId() {
         return id;
@@ -57,31 +41,24 @@ public class Bodega implements Serializable{
         this.id = id;
     }
 
-    public String getBodegId() {
-        return bodegId;
+    public String getEstadoId() {
+        return estadoId;
     }
 
-    public void setBodegId(String bodegId) {
-        this.bodegId = bodegId;
+    public void setEstadoId(String estadoId) {
+        this.estadoId = estadoId;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
+    public String getNombreEstado() {
+        return nombreEstado;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setNombreEstado(String nombreEstado) {
+        this.nombreEstado = nombreEstado;
     }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
+		
 	
+
 
 
 	
@@ -92,7 +69,7 @@ public class Bodega implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((bodegId == null) ? 0 : bodegId.hashCode());
+		result = prime * result + ((estadoId == null) ? 0 : estadoId.hashCode());
 		return result;
 	}
 
@@ -102,18 +79,18 @@ public class Bodega implements Serializable{
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof User))
+		if (!(obj instanceof Estado))
 			return false;
-		Bodega other = (Bodega) obj;
+		Estado other = (Estado) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (bodegId == null) {
-			if (other.bodegId != null)
+		if (estadoId == null) {
+			if (other.estadoId != null)
 				return false;
-		} else if (!bodegId.equals(other.bodegId))
+		} else if (!estadoId.equals(other.estadoId))
 			return false;
 		return true;
 	}
@@ -121,8 +98,8 @@ public class Bodega implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Bodega [id=" + id + ", bodegId=" + bodegId + ", ubicacion=" + ubicacion
-				+ ", descripcion=" + descripcion + "]";
+		return "Estado [id=" + id + ", estadoId=" + estadoId + ", nombreEstado=" + nombreEstado
+				+ "]";
 	}
 
 

@@ -98,6 +98,28 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-3 control-lable">Departamentos</label>
+					<div class="col-md-7">
+						<form:select for="departamentoFK" type="departamentoFK" path="departamentoFK" id="departamentoFK" class="form-control input-sm">
+                                                    <form:option value="NULL" type="text" label="----Seleccione----"/>
+                                                    <form:option value="Desarrollo" type="text" label="Desarrollo"/>
+                                                    <form:option value="Recursos Humanos" type="text" label="Recursos Humanos"/>
+                                                    <form:option value="Administrativo" type="text" label="Administrativo"/>
+                                                    <form:option value="Tecnologia" type="text" label="Tecnologia"/>
+                                                    <form:option value="Contabilidad" type="text" label="Contabilidad"/>
+                                                    <form:option value="Marketing" type="text" label="Marketing"/>
+                                                    
+                                              </form:select>
+						<div class="has-error">
+							<form:errors path="userProfiles" class="help-inline"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 	
 			<div class="row">
 				<div class="form-actions floatRight">

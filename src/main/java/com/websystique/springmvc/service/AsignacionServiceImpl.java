@@ -7,66 +7,60 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.websystique.springmvc.dao.ComprasDao;
-import com.websystique.springmvc.model.Compras;
+import com.websystique.springmvc.dao.AsignacionDao;
+import com.websystique.springmvc.model.Asignacion;
 
 
-@Service("comprasService")
+@Service("asignacionService")
 @Transactional
-public class ComprasServiceImpl implements ComprasService{
+public class AsignacionServiceImpl implements AsignacionService{
 
 	@Autowired
-	private ComprasDao dao;
+	private AsignacionDao dao;
 
-//	@Autowired
-//    private PasswordEncoder passwordEncoder;
+	//@Autowired
+    //private PasswordEncoder passwordEncoder;
 	
-	public Compras findByIdc(int id) {
-		return dao.findByIdc(id);
+	public Asignacion findByIda(int id) {
+		return dao.findByIda(id);
 	}
 
-	public Compras findByCOM(String com) {
-		Compras compras = dao.findByCOM(com);
-		return compras;
+	public Asignacion findByASI(String asi) {
+		Asignacion asignacion = dao.findByASI(asi);
+		return asignacion;
 	}
 
-	public void saveCompras(Compras compras) {
+	public void saveAsignacion(Asignacion asignacion) {
 		//user.setPassword(passwordEncoder.encode(user.getPassword()));
-		dao.savec(compras);
+		dao.savea(asignacion);
 	}
 
 	
-	public void updateCompras(Compras compras) {
-		Compras entity = dao.findByIdc(compras.getId());
+	public void updateAsignacion(Asignacion asignacion) {
+		Asignacion entity = dao.findByIda(asignacion.getId());
 		if(entity!=null){
-			entity.setNombreId(compras.getNombreId());
+			entity.setAsignacionId(asignacion.getAsignacionId());
 			
-		        entity.setDescripcion(compras.getDescripcion());
-			entity.setFechaCompra(compras.getFechaCompra());
+			entity.setUsuarioFk(asignacion.getUsuarioFk());
+			entity.setFechaCreado(asignacion.getFechaCreado());
+			entity.setFechaModificado(asignacion.getFechaModificado());
+			entity.setHardwareFk(asignacion.getHardwareFk());
 			
 		}
 	}
 
 	
+	public void deleteAsignacionByASI(String asi) {
+		dao.deleteByASI(asi);
+	}
+
+	public List<Asignacion> findAllAsignaciones() {
+		return dao.findAllAsignaciones();
+	}
+
+	public boolean isAsignacionASIUnique(Integer id, String asi) {
+		Asignacion asignacion = findByASI(asi);
+		return ( asignacion == null || ((id != null) && (asignacion.getId() == id)));
+	}
 	
-
-	public List<Compras> findAllCompras() {
-		return dao.findAllCompras();
-	}
-
-	public boolean isComprasCOMUnique(Integer id, String com) {
-		Compras compras = findByCOM(com);
-		return ( compras == null || ((id != null) && (compras.getId() == id)));
-	}
-
-    @Override
-    public void deleteComprasByCOM(String com) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-         dao.deleteByCOM(com);
-    }
-
-    
-   
-
-  
 }

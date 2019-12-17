@@ -2,15 +2,16 @@ package com.websystique.springmvc.service;
 
 import java.util.List;
 
-import com.websystique.springmvc.model.UserProfile;
+import com.websystique.springmvc.model.Hardware;
 
 
-public interface UserProfileService {
+public interface HardwareProfileService {
 
-	UserProfile findById(int id);
+	Hardware findByIdh(int id);
 
-	UserProfile findByType(String type);
+	Hardware findByTypeh(String id);
 	
-	List<UserProfile> findAll();
+	List<Hardware> findAllh();
+   
 	
 }
